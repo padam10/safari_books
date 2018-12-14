@@ -4,14 +4,24 @@ import './App.css';
 import Person from './Person/Person'
 
 class App extends Component {
+
+  state = {
+    persons:[
+      { name:"Padam",age: "28" },
+      { name:"Jerry",age: "49" },
+      { name:"Elaine",age: "52" }
+    ]
+  }
+
   render() {
     return (
       <div className="App" >
       <h1>I am react App</h1>
       <p> This is a p tag </p>
-      <Person name = "Padam" age = "25" ></Person>
-      <Person name = "Jerry" age = "50"> His Hobbies: Cars</Person>
-      <Person name = "Elaine" age = "51"></Person>
+      <button> Switch Name </button>
+      <Person name = {this.state.persons[0].name} age = {this.state.persons[0].age} ></Person>      
+      <Person name = {this.state.persons[1].name} age = {this.state.persons[1].age} ></Person>      
+      <Person name = {this.state.persons[2].name} age = {this.state.persons[2].age} ></Person>      
       </div>
     );
   }
