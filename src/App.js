@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Person from './Person/Person'
 
@@ -10,11 +9,18 @@ class App extends Component {
       { name:"Padam",age: "28" },
       { name:"Jerry",age: "49" },
       { name:"Elaine",age: "52" }
-    ]
+    ],
+    otherState: "Some other value"
   }
 
   swithNameHandler = () =>{
-    console.log("was clicked");
+    // Don't do this: this.state.persons[0].name = "Padam"
+    this.setState({
+      persons: [
+        { name:"PadamB",age: "28" },
+        { name:"Jerry",age: "49" },
+        { name:"Elaine",age: "53" }
+      ]})
   }
 
   render() {
