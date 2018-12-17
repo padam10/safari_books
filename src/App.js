@@ -33,11 +33,21 @@ class App extends Component {
   }
 
   render() {
+    const style = {
+      backgroundColor:'red',
+      font: 'inherit',
+      border : '1x solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+
+    }
     return (
       <div className="App" >
       <h1>React Demo App</h1>
       <p> This is a p tag </p>
-      <button onClick={this.swithNameHandler}> Switch Name </button>
+      <button 
+      style = {style}
+      onClick={this.swithNameHandler}> Switch Name </button>
       <Person
        name = {this.state.persons[0].name}
         age = {this.state.persons[0].age} >

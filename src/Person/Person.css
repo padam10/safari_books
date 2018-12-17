@@ -1,0 +1,9 @@
+.Person{
+    widows: 60%;
+    margin: 16px auto;
+    border:1px solid blue;
+    box-shadow: 1 1px 1px #ccc;
+    padding: 16px;
+    text-align: center;
+}
+
