@@ -10,7 +10,9 @@ class App extends Component {
       { name:"Jerry",age: "49" },
       { name:"Elaine",age: "52" }
     ],
-    otherState: "Some other value"
+    otherState: "Some other value",
+    showPersons: false
+
   }
 
   swithNameHandler = () =>{
@@ -32,6 +34,12 @@ class App extends Component {
     ]})
   }
 
+  togglePersonsHandler=() =>{
+    const doesShow = this.state.showPersons;
+    this.setState({showPersons:!doesShow});
+
+  }
+
   render() {
     const style = {
       backgroundColor:'red',
@@ -47,23 +55,29 @@ class App extends Component {
       <p> This is a p tag </p>
       <button 
       style = {style}
-      onClick={this.swithNameHandler}> Switch Name </button>
-      <Person
-       name = {this.state.persons[0].name}
-        age = {this.state.persons[0].age} >
-      </Person> 
+      onClick={this.togglePersonsHandler}> Switch Name </button>
+{
+  this.state.showPersons ? 
+  <div >       
+    <Person
+     name = {this.state.persons[0].name}
+      age = {this.state.persons[0].age} >
+    </Person> 
 
-      <Person 
-      name = {this.state.persons[1].name}
-       age = {this.state.persons[1].age} 
-       click={this.swithNameHandler.bind(this,"Kramer")}
-       changed = {this.nameChangedHandler}> My Hobbies: racing
-       </Person>    
+    <Person 
+    name = {this.state.persons[1].name}
+     age = {this.state.persons[1].age} 
+     click={this.swithNameHandler.bind(this,"Kramer")}
+     changed = {this.nameChangedHandler}> My Hobbies: racing
+     </Person>    
 
-      <Person 
-      name = {this.state.persons[2].name}
-      age = {this.state.persons[2].age} >
-      </Person>      
+    <Person 
+    name = {this.state.persons[2].name}
+    age = {this.state.persons[2].age} >
+    </Person> 
+    </div> :null  
+}
+         
       </div>
     );
   }
