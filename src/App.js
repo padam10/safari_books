@@ -15,16 +15,6 @@ class App extends Component {
 
   }
 
-  swithNameHandler = () => {
-    // Don't do this: this.state.persons[0].name = "Padam"
-    this.setState({
-      persons: [
-        { name: "PadamB", age: "28" },
-        { name: "Jerry", age: "49" },
-        { name: "Elaine", age: "53" }
-      ]
-    })
-  }
 
   nameChangedHandler = (event) => {
     this.setState({
@@ -35,6 +25,12 @@ class App extends Component {
       ]
     })
   }
+
+deletePersonHandler = (personIndex) => {
+  const persons = this.state.persons;
+  persons.splice(personIndex,1);
+  this.setState({persons:persons});
+}
 
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
@@ -56,10 +52,12 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (
         <div >
-          {this.state.persons.map(person =>{
-            return <Person name = {person.name}
-            age = {person.age}/>
-          })}          
+          {this.state.persons.map((person, index) => {
+            return <Person
+            click = {()=> this.deletePersonHandler(index)}
+              name={person.name}
+              age={person.age} />
+          })}
         </div>
 
       );
@@ -72,7 +70,7 @@ class App extends Component {
         <button
           style={style}
           onClick={this.togglePersonsHandler}> Toggle Persons </button>
-          {persons}
+        {persons}
 
       </div>
     );
