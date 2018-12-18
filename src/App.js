@@ -27,7 +27,8 @@ class App extends Component {
   }
 
 deletePersonHandler = (personIndex) => {
-  const persons = this.state.persons;
+  // create an copy of an array before deleting an element from it
+   const persons = [...this.state.persons];//create a copy of array- immutable way
   persons.splice(personIndex,1);
   this.setState({persons:persons});
 }
