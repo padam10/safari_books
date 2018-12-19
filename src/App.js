@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person'
+import './App.css';
 
 class App extends Component {
 
@@ -74,15 +75,23 @@ deletePersonHandler = (personIndex) => {
       style.backgroundColor = 'red';
     }
 
+    let classes = [];
+
+    if(this.state.persons.length <= 2){
+      classes.push('red');
+    }
+
+    if(this.state.persons.length <= 1){
+      classes.push('bold');
+    }
     return (
       <div className="App" >
-        <h1>React Demo App</h1>
-        <p> This is a p tag </p>
+        <h3 >React Demo App</h3>
+        <p className ={classes.join(' ')}> This is a p tag </p>
         <button
           style={style}
           onClick={this.togglePersonsHandler}> Toggle Persons </button>
         {persons}
-
       </div>
     );
   }
