@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person'
-import './App.css';
+import Radium from 'radium';
 
 class App extends Component {
 
@@ -53,7 +53,12 @@ deletePersonHandler = (personIndex) => {
       font: 'inherit',
       border: '1x solid blue',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      ':hover':{
+        backgroundColor:'lightgreen',
+        color:'black'
+      }
+        
 
     };
 
@@ -73,6 +78,10 @@ deletePersonHandler = (personIndex) => {
         </div>
       );
       style.backgroundColor = 'red';
+      style[':hover'] ={
+        backgroundColor:'salmon',
+        color:'black'
+      }
     }
 
     let classes = [];
@@ -97,4 +106,4 @@ deletePersonHandler = (personIndex) => {
   }
 }
 
-export default App;
+export default Radium(App);// This is called higher order component
