@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person'
-import Radium from 'radium';
+import Radium, {StyleRoot} from 'radium';
 
 class App extends Component {
 
@@ -94,6 +94,7 @@ deletePersonHandler = (personIndex) => {
       classes.push('bold');
     }
     return (
+      <StyleRoot>
       <div className="App" >
         <h3 >React Demo App</h3>
         <p className ={classes.join(' ')}> This is a p tag </p>
@@ -102,6 +103,7 @@ deletePersonHandler = (personIndex) => {
           onClick={this.togglePersonsHandler}> Toggle Persons </button>
         {persons}
       </div>
+      </StyleRoot>
     );
   }
 }
