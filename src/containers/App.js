@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Person from '../Components/Persons/Person/Person'
+import Persons from '../Components/Persons/Persons'
 import Radium, {StyleRoot} from 'radium';
 
 class App extends Component {
@@ -66,15 +66,10 @@ deletePersonHandler = (personIndex) => {
     if (this.state.showPersons) {
       persons = (
         <div >
-          {this.state.persons.map((person, index) => {
-            return <Person
-            click = {()=> this.deletePersonHandler(index)}
-              name={person.name}
-              age={person.age} 
-              key = {person.id}
-              changed = {(event)=> this.nameChangedHandler(event, person.id)}            
-              />
-          })}
+          <Persons
+           persons = {this.state.persons}
+           clicked = {this.deletePersonHandler}
+           changed = {this.nameChangedHandler}/>        
         </div>
       );
       style.backgroundColor = 'red';
